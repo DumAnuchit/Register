@@ -15,6 +15,58 @@ public class Register {
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+//                JOptionPane.showMessageDialog(null,txtUsername.getText()+" "+
+//                        new String(txtPassword.getPassword())+" "+ txtEmail.getText());
+
+
+                PreparedStatement pst;
+                if( new String(txtPassword.getPassword()).equals( new String(txtRePassword.getPassword()))){
+
+
+                    try{
+                        String serverName = "sql12.freemysqlhosting.net";
+                        String mydatabase = "sql12255832";
+                        String url = "jdbc:mysql://" + serverName + "/" + mydatabase;
+                        String username = "sql12255832";
+                        String password = "VqusRaY3qH";
+                        Connection connection = DriverManager.getConnection(url, username, password);
+                        connection.createStatement();
+
+                        String sql ="Insert into User(User_Name, User_Email, User_Password) values (?,?,?)";
+
+                        pst=connection.prepareStatement(sql);
+                        pst.setString(1, txtUsername.getText());
+                        pst.setString(2, txtEmail.getText());
+                        pst.setString(3,  new String(txtPassword.getPassword()));
+                        pst.execute();
+
+
+                        JOptionPane.showMessageDialog(null, "ลงทะเบียนเสร็จสิ้น");
+
+
+
+
+                    }
+
+                    catch(Exception String) {
+                        JOptionPane.showMessageDialog(null, e);
+
+                    }
+
+
+                }
+                else{
+                    JOptionPane.showMessageDialog(null, "รหัสผ่านไม่ตรงกัน");
+
+                }
+
+            }
+
+        });
+
+        btnClear.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
             }
         });
