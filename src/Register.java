@@ -20,7 +20,7 @@ public class Register {
 
 
                 PreparedStatement pst;
-                if( new String(txtPassword.getPassword()).equals( new String(txtRePassword.getPassword()))){
+                if( new String(textPassword.getPassword()).equals( new String(textRePassword.getPassword()))){
 
 
                     try{
@@ -35,9 +35,9 @@ public class Register {
                         String sql ="Insert into User(User_Name, User_Email, User_Password) values (?,?,?)";
 
                         pst=connection.prepareStatement(sql);
-                        pst.setString(1, txtUsername.getText());
-                        pst.setString(2, txtEmail.getText());
-                        pst.setString(3,  new String(txtPassword.getPassword()));
+                        pst.setString(1, textUsername.getText());
+                        pst.setString(2, textEmail.getText());
+                        pst.setString(3,  new String(textPassword.getPassword()));
                         pst.execute();
 
 
